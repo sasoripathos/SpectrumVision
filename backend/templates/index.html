@@ -1,0 +1,153 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CamVidPic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <script src="https://kit.fontawesome.com/99aac2e643.js"></script>
+  </head>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">AppName</a>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <div class="navbar-nav mr-auto"></div>
+        <form class="form-inline my-2 my-lg-0">
+            <div class="form-control mr-sm-2">Sample User</div>
+          <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"> -->
+          <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+      </div>
+    </nav>
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>Caregiver Dashboard</h2>
+            <p class="lead">Manage your patients</p>
+        </div>
+        <ul class="nav">
+            <div class = "modes">
+                <!-- Rounded switch -->
+                <i class="far fa-eye"></i>
+                <h5 style = "float:left;padding-right:5px;">Eye Mode </h5>
+                <label id="eye" class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <i style = "margin-left: 25px;"class="fas fa-deaf"></i>
+                <h5 style = "padding-right:5px;">Hearing Mode </h5>
+                <label id="ear" class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </ul>
+        <div class = "cards">
+                <div class="card" style="width: 50%;margin-top:3%;">
+                        <div style = "display:flex;flex-direction: row;" class ="card-header">
+                          <img src = "img/contacts.png">
+                          <h4 style = "margin-left:5px;">Available Contacts</h4>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                              <div style = "display:flex;flex-direction:column">
+                                <h6>Jerry</h6>
+                                <p class = "text-muted" style = "font-size:0.8em;">612784875</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                                <div style = "display:flex;flex-direction:column">
+                                  <h6>Tom</h6>
+                                  <p class = "text-muted" style = "font-size:0.8em;">612784875</p>
+                              </div>
+                          </li>
+                        </ul>
+                </div>
+                <div class="card" style="width: 50%;margin-top:3%;margin-left:2%;">
+                        <div style = "display:flex;flex-direction: row;" class ="card-header">
+                          <img src = "img/places.png">
+                          <h4 style = "margin-left:5px;">Places Visited</h4>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                              <div style = "display:flex;flex-direction:column">
+                                <h6 class = "my-0">Bahen Centre for Information Technology</h6>
+                                <small class = "text-muted"> 10:30am-11:00am</small>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                                <div style = "display:flex;flex-direction:column">
+                                    <h6 class = "my-0">Koffler Student Services Centre</h6>
+                                    <small class = "text-muted"> 11:00am-11:10am</small>
+                              </div>
+                        </li>
+                        <li class="list-group-item">
+                                <div style = "display:flex;flex-direction:column">
+                                    <h6 class = "my-0">Fields Inst for Research in Math Science</h6>
+                                    <small class = "text-muted"> 11:30am-12:00pm</small>
+                              </div>
+                        </li>    
+                        </ul>
+                </div>
+                
+                <!--Doctor
+                <h4 class="mb-3">Doctor</h4>
+                <div>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0">Dr.Bob</h6>
+                                <small class="text-muted">123456789</small>
+                            </div>
+                            <span class="delbutton">X</span>
+                        </li>
+                    </ul>
+                </div>-->
+
+        </div>
+        <div style = "display:flex;flex-direction:row">
+        <div class="card" style="width: 50%;margin-top:3%;margin-left:0%;">
+                <div style = "display:flex;flex-direction: row;" class ="card-header">
+                  <img src = "img/doctor.png">
+                  <h4 style = "margin-left:5px;">Doctors</h4>
+                </div>
+                <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0">Dr.Bob</h6>
+                                <small class="text-muted">123456789</small>
+                            </div>
+                            <span class="delbutton">X</span>
+                        </li>
+                </ul>
+        </div>
+        <div class="card" style="width: 50%; margin-top:3%;margin-left:3%;">
+                <div class="card-body">
+                  <h5 style = "text-align:center;" class="card-title">Allergies</h5>
+                  <p style = "text-align:center;" class="card-text">Keep into consideration that your patients have the following allergies</p>
+                  <h5 style = "text-align: center;">
+                  <span class="badge badge-danger">Peanut</span>
+                  <span class="badge badge-danger">Sesame</span>
+                  <span class="badge badge-primary">Pollen</span>
+                  <span class="badge badge-light">+</span>
+                </h5>
+                </div>
+        </div>
+    </div>
+        <footer class="my-5 pt-2 text-muted text-center text-small">
+            <p class="mb-1">© Team name</p>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Credit</a></li>
+            </ul>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{% static 'js/api.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>
