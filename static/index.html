@@ -7,23 +7,91 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
     <link rel="stylesheet" href="style/style.css">
+    <script src="https://kit.fontawesome.com/99aac2e643.js"></script>
+  </head>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
       <a class="navbar-brand" href="#">AppName</a>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <div class="navbar-nav mr-auto"></div>
         <form class="form-inline my-2 my-lg-0">
             <div class="form-control mr-sm-2">Sample User</div>
           <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"> -->
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+          <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Logout</button>
         </form>
       </div>
     </nav>
     <div class="container">
         <div class="py-5 text-center">
-            <h2>Caregiver Console</h2>
-            <p class="lead">I don't know what to write here</p>
+            <h2>Caregiver Dashboard</h2>
+            <p class="lead">Manage your patients</p>
+        </div>
+        <ul class="nav">
+            <div class = "modes">
+                <!-- Rounded switch -->
+                <i class="far fa-eye"></i>
+                <h5 style = "float:left;padding-right:5px;">Eye Mode </h5>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <i style = "margin-left: 25px;"class="fas fa-deaf"></i>
+                <h5 style = "padding-right:5px;">Hearing Mode </h5>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </ul>
+        <div class = "cards">
+                <div class="card" style="width: 50%;margin-top:3%;">
+                        <div style = "display:flex;flex-direction: row;" class ="card-header">
+                          <img src = "img/contacts.png">
+                          <h4 style = "margin-left:5px;">Available Contacts</h4>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                              <div style = "display:flex;flex-direction:column">
+                                <h6>Jerry</h6>
+                                <p class = "text-muted" style = "font-size:0.8em;">612784875</p>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                                <div style = "display:flex;flex-direction:column">
+                                  <h6>Tom</h6>
+                                  <p class = "text-muted" style = "font-size:0.8em;">612784875</p>
+                              </div>
+                          </li>
+                        </ul>
+                </div>
+                <div class="card" style="width: 50%;margin-top:3%;margin-left:2%;">
+                        <div style = "display:flex;flex-direction: row;" class ="card-header">
+                          <img src = "img/places.png">
+                          <h4 style = "margin-left:5px;">Places Visited</h4>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                              <div style = "display:flex;flex-direction:column">
+                                <h6 class = "my-0">Bahen Centre for Information Technology</h6>
+                                <small class = "text-muted"> 10:30am-11:00am</small>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                                <div style = "display:flex;flex-direction:column">
+                                    <h6 class = "my-0">Koffler Student Services Centre</h6>
+                                    <small class = "text-muted"> 11:00am-11:10am</small>
+                              </div>
+                        </li>
+                        <li class="list-group-item">
+                                <div style = "display:flex;flex-direction:column">
+                                    <h6 class = "my-0">Fields Inst for Research in Math Science</h6>
+                                    <small class = "text-muted"> 11:30am-12:00pm</small>
+                              </div>
+                        </li>
+                        
+                        </ul>
+                </div>
         </div>
         <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
@@ -58,17 +126,6 @@
                 </ul>
             </div>
             <div class="col-md-8 order-md-1">
-                <h4 class="mb-3">Model</h4>
-                <div class="d-block my-2">
-                  <div id="eye" class="custom-control custom-radio">
-                    <input name="paymentMethod" type="radio" class="custom-control-input" required>
-                    <label class="custom-control-label" for="credit">Eye Mode</label>
-                  </div>
-                  <div  id="ear" class="custom-control custom-radio">
-                    <input name="paymentMethod" type="radio" class="custom-control-input" required>
-                    <label class="custom-control-label" for="debit">Ear Mode</label>
-                  </div>
-                </div>
                 <h4 class="mb-3">Available Contact</h4>
                 <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
