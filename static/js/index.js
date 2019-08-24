@@ -27,23 +27,32 @@
                 video: { facingMode: 'environment' }
             };
             let msg = document.getElementById('msg');
+            let workId = null;
             navigator.mediaDevices.getUserMedia(constraints)
                 .then(stream => {
                     let videoTrack = stream.getVideoTracks()[0];
                     let vd = document.getElementById('vd');
                     vd.srcObject = stream;
-                    let bt = document.getElementById('capture');
+                    let bt = document.getElementById('start');
                     bt.addEventListener('click', e => {
                         e.preventDefault();
                         msg.innerHTML = 'clicked';
-                        let cv = document.getElementById('cv');
-                        cv.height = vd.videoHeight;
-                        cv.width = vd.videoWidth;
-                        cv.getContext("2d").drawImage(vd, 0, 0, cv.width, cv.height);
-                        cv.toBlob(blob => {
-                            msg.innerHTML = JSON.stringify(blob);
-                            api.uploadImage(blob);
-                        });     
+                        if(bt.innerHTML === 'Stop') {
+                            bt.innerHTML = 'Start working';
+                            clearInterval(workId);
+                        } else {
+                            bt.innerHTML = 'Stop';
+                            workId = setInterval(() => {
+                                let cv = document.getElementById('cv');
+                                cv.height = vd.videoHeight;
+                                cv.width = vd.videoWidth;
+                                cv.getContext("2d").drawImage(vd, 0, 0, cv.width, cv.height);
+                                cv.toBlob(blob => {
+                                    msg.innerHTML = JSON.stringify(blob);
+                                    api.uploadImage(blob);
+                                });  
+                            }, 2000);
+                        }
                     });
                 })
                 .catch(err => {
@@ -71,8 +80,8 @@
             `;
             let capBt = document.createElement('button');
             capBt.className = "btn btn-outline-success my-2 my-sm-0";
-            capBt.innerHTML = 'Capture';
-            capBt.id = 'capture';
+            capBt.innerHTML = 'Start working';
+            capBt.id = 'start';
             container.appendChild(capBt);
             let msg = document.createElement('div');
             msg.id = 'msg';
