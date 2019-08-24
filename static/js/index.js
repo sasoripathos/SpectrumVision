@@ -4,7 +4,14 @@
     window.addEventListener('load', function(){
         function caregiver() {
             api.onModeUpdate(mode => {
-                document.querySelector("#" + mode + " > input").checked = true;
+                let switches = document.querySelectorAll(".switch");
+                switches.forEach(s => {
+                    if(s.id == mode) {
+                        s.querySelector('input').checked = true;
+                    } else {
+                        s.querySelector('input').checked = false;
+                    }
+                });
             });
 
             // On load, get current mode
