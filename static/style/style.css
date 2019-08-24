@@ -1,0 +1,21 @@
+.delbutton {
+    align-items: center;
+    padding: .375rem .75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 90%;
+    }
+}
+
+#cv {
+    display: none;
+}
