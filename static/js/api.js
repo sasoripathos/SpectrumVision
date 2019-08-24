@@ -46,7 +46,7 @@ var api = (function(){
     module.uploadImage = (img) => {
         formPost('/api/image/', {image:img}, (error, res) => {
             if(error) console.log(error);
-            else console.log('success');
+            else console.log(res);
         });
     };
 
