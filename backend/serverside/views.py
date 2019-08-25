@@ -1,4 +1,4 @@
-import os
+import json
 
 from django.http import HttpResponse
 from rest_framework import status
@@ -50,7 +50,7 @@ def analyze_image(request):
 @api_view(['GET', 'POST'])
 def analyze_mode(request):
     if request.method == 'POST':
-        body = request.body.
+        body = json.loads(request.body)
         print(body)
         config.CURRENT_MODE = body['mode']
         return Response(body['mode'])
