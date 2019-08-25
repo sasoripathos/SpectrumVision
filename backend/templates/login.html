@@ -1,14 +1,15 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Login Form Design One | Fazt</title>
-    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="{% static 'css/master.css' %}">
   </head>
   <body>
 
     <div class="login-box">
-      <img src="img/logo.png" class="avatar" alt="Avatar Image">
+      <img src="{% static 'img/logo.png' %}" class="avatar" alt="Avatar Image">
       <h1>Login Here</h1>
       <form>
         <!-- USERNAME INPUT -->
@@ -17,10 +18,11 @@
         <!-- PASSWORD INPUT -->
         <label for="password">Password</label>
         <input type="password" placeholder="Enter Password">
-        <input type="submit" value="Log In">
+        <a href = "{% url 'home' %}"><input type="submit" value="Log In"></a>
         <a href="#">Lost your Password?</a><br>
         <a href="#">Don't have An account?</a>
       </form>
     </div>
+  <script src="{% static 'js/login.js' %}"></script>
   </body>
 </html>

@@ -91,15 +91,6 @@
                 }, (err) => {
                     console.log(err);
                 });
-                
-                //now play the sound.
-                //source.start(0); // For computer
-                /*document.querySelector('#sound').onclick = e => {
-                    e.preventDefault();
-                    document.getElementById('msg').innerHTML = "Auto play the sound";
-                    source.start(0);
-                };
-                document.querySelector('#sound').click();*/
                 window.ondevicemotion = function(e) {
                     if(e.acceleration.x || e.acceleration.y || e.acceleration.z || e.rotationRate.alpha
                         || e.rotationRate.beta || e.rotationRate.gamma) {
