@@ -7,9 +7,10 @@ var api = (function(){
             formdata.append(k, data[k]);
         });
         let req = new XMLHttpRequest();
+        req.responseType = "arraybuffer";
         req.onload = () => {
-            if(req.status !== 200) callback(req.status + ": " + req.responseText, null);
-            else callback(null, JSON.parse(req.responseText));
+            if(req.status !== 200) callback(req.status + ": " + req.response, null);
+            else callback(null, req.response);
         };
         req.open('POST', url, true);
         req.send(formdata);
@@ -46,7 +47,7 @@ var api = (function(){
     module.uploadImage = (img) => {
         formPost('api/image/', {image:img}, (error, res) => {
             if(error) console.log(error);
-            else console.log('success');
+            else notifyAudioListener(res);
         });
     };
 
@@ -60,6 +61,18 @@ var api = (function(){
 
     module.onModeUpdate = function(listener){
         modeListener.push(listener);
+    };
+
+    let audioListener = [];
+
+    function notifyAudioListener(blob) {
+        audioListener.forEach((i) => {
+            i(blob);
+        });
+    }
+
+    module.onAudioUpdate = function(listener){
+        audioListener.push(listener);
     };
 
     

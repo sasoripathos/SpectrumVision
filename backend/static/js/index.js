@@ -58,7 +58,7 @@
                                     msg.innerHTML = JSON.stringify(blob);
                                     api.uploadImage(blob);
                                 });  
-                            }, 2000);
+                            }, 5000);
                         }
                     });
                 })
@@ -76,6 +76,43 @@
             return check;
         };
 
+        function playAudio(ad) {
+            try {
+                console.log(ad);
+                window.AudioContext = window.AudioContext || window.webkitAudioContext;
+                let context = new AudioContext();
+                let source = context.createBufferSource(); //this represents the audio source. We need to now populate it with binary data.
+                let buffer = new Uint8Array(ad);
+                //buffer.set(new Uint8Array(ad), 0);
+                /*console.log(ad.arrayBuffer);*/
+                context.decodeAudioData(buffer.buffer, function(bf) {
+                    source.buffer = bf;
+                    source.connect(context.destination);
+                }, (err) => {
+                    console.log(err);
+                });
+                
+                //now play the sound.
+                //source.start(0); // For computer
+                /*document.querySelector('#sound').onclick = e => {
+                    e.preventDefault();
+                    document.getElementById('msg').innerHTML = "Auto play the sound";
+                    source.start(0);
+                };
+                document.querySelector('#sound').click();*/
+                window.ondevicemotion = function(e) {
+                    if(e.acceleration.x || e.acceleration.y || e.acceleration.z || e.rotationRate.alpha
+                        || e.rotationRate.beta || e.rotationRate.gamma) {
+                        document.getElementById('msg').innerHTML = "Auto play the sound from motion";
+                        source.start(0);
+                    }
+                };
+                    
+            } catch(e) {
+                console.log(e);
+            }
+        }
+
         if(isMobile()) {
             let container = document.querySelector('.container');
             container.innerHTML = `
@@ -90,9 +127,16 @@
             capBt.innerHTML = 'Start working';
             capBt.id = 'start';
             container.appendChild(capBt);
+            let audioBt = document.createElement('button');
+            audioBt.className = "btn btn-outline-success my-2 my-sm-0";
+            audioBt.innerHTML = 'Sound';
+            audioBt.id = 'sound';
+            container.appendChild(audioBt);
             let msg = document.createElement('div');
             msg.id = 'msg';
             container.appendChild(msg);
+            // audio setup
+            api.onAudioUpdate(playAudio);
             glasses();
         } else {
             console.log("is computer");
