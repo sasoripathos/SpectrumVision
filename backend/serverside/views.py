@@ -1,3 +1,6 @@
+import os
+
+from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -6,6 +9,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http.multipartparser import MultiPartParser
 from azure_services.ImageAnalyser import ImageAnalyser
+from azure_services.TextSpeaker import TextSpeaker
 from requests.exceptions import HTTPError
 
 
@@ -25,10 +29,19 @@ def analyze_image(request):
     print(file)
     analyser = ImageAnalyser(file)
     try:
+        # Get text to speak out
         ans = analyser.analyze()
-        caption = ans["description"]["captions"]
+        caption = ans["description"]["captions"][0]
         print(caption)
-        return Response(caption)
+        # Get the audio of the text
+        speaker = TextSpeaker(caption["text"])
+        audio = speaker.speak()
+        # Construct response
+        res = HttpResponse()
+        res.write(audio)
+        res['Content-Type'] = 'audio/wav'
+        res['Content-Length'] = len(audio)
+        return res
     except HTTPError as err:
         return Response(f'HTTP error occurred: {err}')
 

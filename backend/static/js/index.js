@@ -76,6 +76,15 @@
             return check;
         };
 
+        function playAudio(ad) {
+            console.log(ad);
+            let blob = new Blob([ad.value], { type: 'audio/wav' });
+            let url = URL.createObjectURL(blob);
+            let audio = document.querySelector('audio');
+            audio.src = url;
+            audio.play();
+        }
+
         if(isMobile()) {
             let container = document.querySelector('.container');
             container.innerHTML = `
@@ -84,6 +93,7 @@
             </div>
             <video id='vd' playsinline muted autoplay loop></video>
             <canvas id='cv'></canvas>
+            <audio></audio>
             `;
             let capBt = document.createElement('button');
             capBt.className = "btn btn-outline-success my-2 my-sm-0";
@@ -93,6 +103,7 @@
             let msg = document.createElement('div');
             msg.id = 'msg';
             container.appendChild(msg);
+            api.onAudioUpdate(playAudio);
             glasses();
         } else {
             console.log("is computer");
