@@ -93,7 +93,21 @@
                 });
                 
                 //now play the sound.
-                source.start(0);
+                //source.start(0); // For computer
+                /*document.querySelector('#sound').onclick = e => {
+                    e.preventDefault();
+                    document.getElementById('msg').innerHTML = "Auto play the sound";
+                    source.start(0);
+                };
+                document.querySelector('#sound').click();*/
+                window.ondevicemotion = function(e) {
+                    if(e.acceleration.x || e.acceleration.y || e.acceleration.z || e.rotationRate.alpha
+                        || e.rotationRate.beta || e.rotationRate.gamma) {
+                        document.getElementById('msg').innerHTML = "Auto play the sound from motion";
+                        source.start(0);
+                    }
+                };
+                    
             } catch(e) {
                 console.log(e);
             }
@@ -113,6 +127,11 @@
             capBt.innerHTML = 'Start working';
             capBt.id = 'start';
             container.appendChild(capBt);
+            let audioBt = document.createElement('button');
+            audioBt.className = "btn btn-outline-success my-2 my-sm-0";
+            audioBt.innerHTML = 'Sound';
+            audioBt.id = 'sound';
+            container.appendChild(audioBt);
             let msg = document.createElement('div');
             msg.id = 'msg';
             container.appendChild(msg);
