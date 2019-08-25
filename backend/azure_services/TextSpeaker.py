@@ -19,7 +19,7 @@ class TextSpeaker(object):
         headers = {
             'Authorization': 'Bearer ' + self.access_token,
             'Content-Type': 'application/ssml+xml',
-            'X-Microsoft-OutputFormat': 'riff-24khz-16bit-mono-pcm',
+            'X-Microsoft-OutputFormat': 'audio-16khz-32kbitrate-mono-mp3',
             'User-Agent': Config.SPEECH_SERVICE_RESOURCE_NAME
         }
         xml_body = ElementTree.Element('speak', version='1.0')

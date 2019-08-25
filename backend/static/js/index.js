@@ -58,7 +58,7 @@
                                     msg.innerHTML = JSON.stringify(blob);
                                     api.uploadImage(blob);
                                 });  
-                            }, 2000);
+                            }, 5000);
                         }
                     });
                 })
@@ -77,12 +77,26 @@
         };
 
         function playAudio(ad) {
-            console.log(ad);
-            let blob = new Blob([ad.value], { type: 'audio/wav' });
-            let url = URL.createObjectURL(blob);
-            let audio = document.querySelector('audio');
-            audio.src = url;
-            audio.play();
+            try {
+                console.log(ad);
+                window.AudioContext = window.AudioContext || window.webkitAudioContext;
+                let context = new AudioContext();
+                let source = context.createBufferSource(); //this represents the audio source. We need to now populate it with binary data.
+                let buffer = new Uint8Array(ad);
+                //buffer.set(new Uint8Array(ad), 0);
+                /*console.log(ad.arrayBuffer);*/
+                context.decodeAudioData(buffer.buffer, function(bf) {
+                    source.buffer = bf;
+                    source.connect(context.destination);
+                }, (err) => {
+                    console.log(err);
+                });
+                
+                //now play the sound.
+                source.start(0);
+            } catch(e) {
+                console.log(e);
+            }
         }
 
         if(isMobile()) {
@@ -93,7 +107,6 @@
             </div>
             <video id='vd' playsinline muted autoplay loop></video>
             <canvas id='cv'></canvas>
-            <audio></audio>
             `;
             let capBt = document.createElement('button');
             capBt.className = "btn btn-outline-success my-2 my-sm-0";
@@ -103,6 +116,7 @@
             let msg = document.createElement('div');
             msg.id = 'msg';
             container.appendChild(msg);
+            // audio setup
             api.onAudioUpdate(playAudio);
             glasses();
         } else {

@@ -7,6 +7,7 @@ var api = (function(){
             formdata.append(k, data[k]);
         });
         let req = new XMLHttpRequest();
+        req.responseType = "arraybuffer";
         req.onload = () => {
             if(req.status !== 200) callback(req.status + ": " + req.response, null);
             else callback(null, req.response);

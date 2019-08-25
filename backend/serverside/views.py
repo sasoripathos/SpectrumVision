@@ -37,10 +37,7 @@ def analyze_image(request):
         speaker = TextSpeaker(caption["text"])
         audio = speaker.speak()
         # Construct response
-        res = HttpResponse()
-        res.write(audio)
-        res['Content-Type'] = 'audio/wav'
-        res['Content-Length'] = len(audio)
+        res = HttpResponse(audio, content_type='application/octet-stream')
         return res
     except HTTPError as err:
         return Response(f'HTTP error occurred: {err}')
