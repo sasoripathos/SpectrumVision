@@ -1,4 +1,2 @@
-# HackThe6ix
-TODO: Hackthe6ix 2019
-
-A project that helps the visually impaired.
+# Login with HTML5 AND CSS3
+![](docs/screenshot.png)
