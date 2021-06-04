@@ -1,6 +1,6 @@
 azure-cognitiveservices-language-textanalytics==0.2.0
 azure-common==1.1.23
-Django==2.2.4
+Django==2.2.21
 djangorestframework==3.10.2
 msrest==0.6.9
 numpy==1.17.0
